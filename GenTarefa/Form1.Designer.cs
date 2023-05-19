@@ -67,6 +67,7 @@
             this.listasButton.TabIndex = 2;
             this.listasButton.Text = "Listas Salvas";
             this.listasButton.UseVisualStyleBackColor = true;
+            this.listasButton.Click += new System.EventHandler(this.listasButton_Click);
             // 
             // deleteButton
             // 

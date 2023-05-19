@@ -42,9 +42,9 @@
             this.nomeLista.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.nomeLista.Location = new System.Drawing.Point(12, 27);
             this.nomeLista.Name = "nomeLista";
-            this.nomeLista.Size = new System.Drawing.Size(161, 30);
+            this.nomeLista.Size = new System.Drawing.Size(172, 30);
             this.nomeLista.TabIndex = 0;
-            this.nomeLista.Text = "Nome da lista: ";
+            this.nomeLista.Text = "Nome da tarefa:";
             // 
             // nameContent
             // 

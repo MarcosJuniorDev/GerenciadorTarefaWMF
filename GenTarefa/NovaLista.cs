@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using GenTarefa.Entities;
 
 namespace GenTarefa
 {
@@ -27,6 +28,10 @@ namespace GenTarefa
         {
             string name = nameContent.Text;
             string desc = conteudoList.Text;
+            Tarefas tarefas = new Tarefas(name, desc);
+            List<Tarefas> tarefasList = new List<Tarefas>();
+            tarefasList.Add(tarefas);    
+
             
             if (!File.Exists(FILE_NAME))
             {
@@ -34,8 +39,8 @@ namespace GenTarefa
                 {
                     using (StreamWriter sw = new StreamWriter(fs))
                     {
-                        sw.WriteLine(name);
-                        sw.WriteLine(desc);
+                        sw.WriteLine(tarefas.Name);
+                        sw.WriteLine(tarefas.Descricao);
                     }
                 }
             }
@@ -43,8 +48,8 @@ namespace GenTarefa
             {
                 using (StreamWriter fs = new StreamWriter(FILE_NAME, true))
                 {
-                    fs.WriteLine(name);
-                    fs.WriteLine(desc);
+                    fs.WriteLine(tarefas.Name);
+                    fs.WriteLine(tarefas.Descricao);
                 }
             }
             nameContent.Text = "";
@@ -55,5 +60,7 @@ namespace GenTarefa
         {
             this.Close();
         }
+
+
     }
 }

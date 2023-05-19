@@ -17,5 +17,11 @@ namespace GenTarefa
             NovaLista novaLista = new NovaLista();
             novaLista.Show();
         }
+
+        private void listasButton_Click(object sender, EventArgs e)
+        {
+            ListasSalvas listasSalvas = new ListasSalvas();
+            listasSalvas.Show();
+        }
     }
 }
