@@ -94,5 +94,10 @@ namespace GenTarefa
                 Console.WriteLine("Erro");
             }
         }
+
+        private void backButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

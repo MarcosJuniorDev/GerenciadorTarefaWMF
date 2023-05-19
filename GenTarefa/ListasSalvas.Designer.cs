@@ -35,6 +35,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.descBox = new System.Windows.Forms.TextBox();
             this.deleteButton = new System.Windows.Forms.Button();
+            this.backButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.gridTarefas)).BeginInit();
             this.SuspendLayout();
             // 
@@ -107,12 +108,24 @@
             this.deleteButton.UseVisualStyleBackColor = true;
             this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
             // 
+            // backButton
+            // 
+            this.backButton.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.backButton.Location = new System.Drawing.Point(304, 337);
+            this.backButton.Name = "backButton";
+            this.backButton.Size = new System.Drawing.Size(122, 57);
+            this.backButton.TabIndex = 7;
+            this.backButton.Text = "VOLTAR";
+            this.backButton.UseVisualStyleBackColor = true;
+            this.backButton.Click += new System.EventHandler(this.backButton_Click);
+            // 
             // ListasSalvas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DimGray;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.backButton);
             this.Controls.Add(this.deleteButton);
             this.Controls.Add(this.descBox);
             this.Controls.Add(this.label2);
@@ -138,5 +151,6 @@
         private Label label2;
         private TextBox descBox;
         private Button deleteButton;
+        private Button backButton;
     }
 }
