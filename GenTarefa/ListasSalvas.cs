@@ -66,27 +66,35 @@ namespace GenTarefa
             {
                 if (gridTarefas.CurrentRow != null)
                 {
-                    List<Tarefas> tarefas = LerDados();
-
-                    Tarefas nomeRemover = tarefas.Find(x => x.Name == gridTarefas.CurrentRow.Cells["Name"].Value.ToString());
-
-                    if (nomeRemover != null)
+                    string msg = "Tem certeza que deseja excluir essa tarefa?";
+                    string titulo = "Deletar Nota";
+                    var result = MessageBox.Show(msg, titulo, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (result == DialogResult.Yes)
                     {
-                        tarefas.Remove(nomeRemover);
-                    }
+                        List<Tarefas> tarefas = LerDados();
 
-                    using (StreamWriter sw = new StreamWriter(FILE_NAME))
-                    {
-                        foreach (Tarefas list in tarefas)
+                        Tarefas nomeRemover = tarefas.Find(x => x.Name == gridTarefas.CurrentRow.Cells["Name"].Value.ToString());
+
+                        if (nomeRemover != null)
                         {
-                            sw.WriteLine(list.Name);
-                            sw.WriteLine(list.Descricao);
+                            tarefas.Remove(nomeRemover);
                         }
-                    }
-                    gridTarefas.DataSource = tarefas;
-                    nameBox.Text = "";
-                    descBox.Text = "";
 
+                        using (StreamWriter sw = new StreamWriter(FILE_NAME))
+                        {
+                            foreach (Tarefas list in tarefas)
+                            {
+                                sw.WriteLine(list.Name);
+                                sw.WriteLine(list.Descricao);
+                            }
+                        }
+                        gridTarefas.DataSource = tarefas;
+                        nameBox.Text = "";
+                        descBox.Text = "";
+                    }
+                    
+                    
+                    
                 }
             }
             catch (Exception ex)

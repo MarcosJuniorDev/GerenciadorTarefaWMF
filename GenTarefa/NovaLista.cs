@@ -54,6 +54,7 @@ namespace GenTarefa
             }
             nameContent.Text = "";
             conteudoList.Text = "";
+            var result = MessageBox.Show("Tarefa criada com sucesso");
         }
 
         private void voltarButton_Click(object sender, EventArgs e)
