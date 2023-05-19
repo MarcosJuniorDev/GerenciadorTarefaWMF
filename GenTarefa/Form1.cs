@@ -9,7 +9,7 @@ namespace GenTarefa
 
         private void AreaInicial_Load(object sender, EventArgs e)
         {
-
+            
         }
 
         private void novaListaButton_Click(object sender, EventArgs e)

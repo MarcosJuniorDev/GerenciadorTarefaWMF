@@ -32,6 +32,8 @@
             this.nameContent = new System.Windows.Forms.TextBox();
             this.conteudoLista = new System.Windows.Forms.Label();
             this.conteudoList = new System.Windows.Forms.TextBox();
+            this.saveButton = new System.Windows.Forms.Button();
+            this.voltarButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // nomeLista
@@ -69,12 +71,36 @@
             this.conteudoList.Size = new System.Drawing.Size(794, 216);
             this.conteudoList.TabIndex = 3;
             // 
+            // saveButton
+            // 
+            this.saveButton.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.saveButton.Location = new System.Drawing.Point(179, 387);
+            this.saveButton.Name = "saveButton";
+            this.saveButton.Size = new System.Drawing.Size(139, 51);
+            this.saveButton.TabIndex = 4;
+            this.saveButton.Text = "SAVE";
+            this.saveButton.UseVisualStyleBackColor = true;
+            this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
+            // 
+            // voltarButton
+            // 
+            this.voltarButton.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.voltarButton.Location = new System.Drawing.Point(490, 387);
+            this.voltarButton.Name = "voltarButton";
+            this.voltarButton.Size = new System.Drawing.Size(125, 51);
+            this.voltarButton.TabIndex = 5;
+            this.voltarButton.Text = "VOLTAR";
+            this.voltarButton.UseVisualStyleBackColor = true;
+            this.voltarButton.Click += new System.EventHandler(this.voltarButton_Click);
+            // 
             // NovaLista
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DimGray;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.voltarButton);
+            this.Controls.Add(this.saveButton);
             this.Controls.Add(this.conteudoList);
             this.Controls.Add(this.conteudoLista);
             this.Controls.Add(this.nameContent);
@@ -93,5 +119,7 @@
         private TextBox nameContent;
         private Label conteudoLista;
         private TextBox conteudoList;
+        private Button saveButton;
+        private Button voltarButton;
     }
 }
