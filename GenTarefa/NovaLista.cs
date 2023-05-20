@@ -39,8 +39,7 @@ namespace GenTarefa
                 {
                     using (StreamWriter sw = new StreamWriter(fs))
                     {
-                        sw.WriteLine(tarefas.Name);
-                        sw.WriteLine(tarefas.Descricao);
+                        sw.WriteLine($"{tarefas.Name};{tarefas.Descricao}");
                     }
                 }
             }
@@ -48,8 +47,7 @@ namespace GenTarefa
             {
                 using (StreamWriter fs = new StreamWriter(FILE_NAME, true))
                 {
-                    fs.WriteLine(tarefas.Name);
-                    fs.WriteLine(tarefas.Descricao);
+                    fs.WriteLine($"{tarefas.Name};{tarefas.Descricao}");
                 }
             }
             nameContent.Text = "";

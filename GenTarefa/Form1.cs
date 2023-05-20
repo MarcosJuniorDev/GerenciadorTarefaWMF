@@ -2,6 +2,7 @@ namespace GenTarefa
 {
     public partial class AreaInicial : Form
     {
+        private const string FILE_NAME = "save.Data";
         public AreaInicial()
         {
             InitializeComponent();
@@ -20,8 +21,16 @@ namespace GenTarefa
 
         private void listasButton_Click(object sender, EventArgs e)
         {
+            if (!File.Exists(FILE_NAME))
+            {
+                using (FileStream fs = new FileStream(FILE_NAME, FileMode.CreateNew))
+                {
+
+                }
+            }
             ListasSalvas listasSalvas = new ListasSalvas();
             listasSalvas.Show();
+           
         }
 
         private void sairButton_Click(object sender, EventArgs e)

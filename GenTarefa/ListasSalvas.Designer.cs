@@ -36,6 +36,7 @@
             this.descBox = new System.Windows.Forms.TextBox();
             this.deleteButton = new System.Windows.Forms.Button();
             this.backButton = new System.Windows.Forms.Button();
+            this.Nome = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridTarefas)).BeginInit();
             this.SuspendLayout();
             // 
@@ -43,6 +44,8 @@
             // 
             this.gridTarefas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.gridTarefas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridTarefas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Nome});
             this.gridTarefas.Location = new System.Drawing.Point(12, 12);
             this.gridTarefas.Name = "gridTarefas";
             this.gridTarefas.RowTemplate.Height = 25;
@@ -119,6 +122,11 @@
             this.backButton.UseVisualStyleBackColor = true;
             this.backButton.Click += new System.EventHandler(this.backButton_Click);
             // 
+            // Nome
+            // 
+            this.Nome.HeaderText = "Nome";
+            this.Nome.Name = "Nome";
+            // 
             // ListasSalvas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -152,5 +160,6 @@
         private TextBox descBox;
         private Button deleteButton;
         private Button backButton;
+        private DataGridViewTextBoxColumn Nome;
     }
 }

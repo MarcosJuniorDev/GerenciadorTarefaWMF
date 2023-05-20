@@ -14,7 +14,7 @@ namespace GenTarefa
     
 
     public partial class ListasSalvas : Form
-    {      
+    {
         
         private const string FILE_NAME = "save.Data";
         public ListasSalvas()
@@ -25,9 +25,21 @@ namespace GenTarefa
 
         private void ListasSalvas_Load(object sender, EventArgs e)
         {
+
+            using (StreamReader sr = new StreamReader(FILE_NAME))
+            {
+                while (!sr.EndOfStream)
+                {
+                    string[] campos = sr.ReadLine().Split(";");
+                    string name = campos[0];
+                    gridTarefas.Rows.Add(name);
+                }
+                
+                
+                
+            }
             
-            List<Tarefas> listaT = LerDados();
-            gridTarefas.DataSource = listaT;
+            //gridTarefas.Columns[1].Visible = false;
             
             
         }
@@ -40,8 +52,9 @@ namespace GenTarefa
                 while (!sr.EndOfStream)
                 {
                     Tarefas tarefas = new Tarefas();
-                    tarefas.Name = sr.ReadLine();
-                    tarefas.Descricao = sr.ReadLine();
+                    string[] vet = sr.ReadLine().Split(";");
+                    tarefas.Name = vet[0];
+                    tarefas.Descricao = vet[1];
                     listaTarefa.Add(tarefas);
 
                 }
@@ -53,8 +66,20 @@ namespace GenTarefa
         {
             if (gridTarefas.CurrentRow != null)
             {
-                nameBox.Text = gridTarefas.CurrentRow.Cells["Name"].Value.ToString();
-                descBox.Text = gridTarefas.CurrentRow.Cells["Descricao"].Value.ToString();
+                using (StreamReader sr = new StreamReader(FILE_NAME))
+                {
+                    List<Tarefas> tarefas = LerDados();
+                    Tarefas tarefaLoad = tarefas.Find(x => x.Name == gridTarefas.CurrentRow.Cells["Nome"].Value.ToString());                    
+                    if (tarefaLoad != null)
+                    {
+                        nameBox.Text = tarefaLoad.Name;
+                        descBox.Text = tarefaLoad.Descricao;
+                    }
+                }
+
+
+                //nameBox.Text = gridTarefas.CurrentRow.Cells["Name"].Value.ToString();
+                //descBox.Text = gridTarefas.CurrentRow.Cells["Descricao"].Value.ToString();
             }
             
            
@@ -73,7 +98,7 @@ namespace GenTarefa
                     {
                         List<Tarefas> tarefas = LerDados();
 
-                        Tarefas nomeRemover = tarefas.Find(x => x.Name == gridTarefas.CurrentRow.Cells["Name"].Value.ToString());
+                        Tarefas nomeRemover = tarefas.Find(x => x.Name == gridTarefas.CurrentRow.Cells["Nome"].Value.ToString());
 
                         if (nomeRemover != null)
                         {
@@ -84,8 +109,7 @@ namespace GenTarefa
                         {
                             foreach (Tarefas list in tarefas)
                             {
-                                sw.WriteLine(list.Name);
-                                sw.WriteLine(list.Descricao);
+                                sw.WriteLine($"{list.Name};{list.Descricao}");
                             }
                         }
                         gridTarefas.DataSource = tarefas;
