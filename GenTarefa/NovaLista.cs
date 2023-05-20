@@ -27,7 +27,7 @@ namespace GenTarefa
         private void saveButton_Click(object sender, EventArgs e)
         {
             string name = nameContent.Text;
-            string desc = conteudoList.Text;
+            string desc = conteudoList.Text.Replace(Environment.NewLine, @"\n");
             Tarefas tarefas = new Tarefas(name, desc);
             List<Tarefas> tarefasList = new List<Tarefas>();
             tarefasList.Add(tarefas);    

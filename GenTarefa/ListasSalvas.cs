@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace GenTarefa
 {
@@ -73,7 +74,9 @@ namespace GenTarefa
                     if (tarefaLoad != null)
                     {
                         nameBox.Text = tarefaLoad.Name;
-                        descBox.Text = tarefaLoad.Descricao;
+                        string[] descVet = tarefaLoad.Descricao.Split(@"\n");
+                        descBox.Text = string.Join( Environment.NewLine, descVet);
+                        
                     }
                 }
 
@@ -112,7 +115,30 @@ namespace GenTarefa
                                 sw.WriteLine($"{list.Name};{list.Descricao}");
                             }
                         }
-                        gridTarefas.DataSource = tarefas;
+                        tarefas = LerDados();
+                        if (tarefas.Count != 0)
+                        {
+                            using (StreamReader sr = new StreamReader(FILE_NAME))
+                            {
+                                while (!sr.EndOfStream)
+                                {
+                                    string[] campos = sr.ReadLine().Split(";");
+                                    string name = campos[0];
+                                    gridTarefas.Rows.Add(name);
+                                }
+
+
+
+                            }
+                        }
+                        else
+                        {
+                            gridTarefas.DataSource = tarefas;
+                            gridTarefas.Columns[1].Visible = false;
+                            gridTarefas.Columns[2].Visible = false;
+                        }
+
+                        
                         nameBox.Text = "";
                         descBox.Text = "";
                     }
